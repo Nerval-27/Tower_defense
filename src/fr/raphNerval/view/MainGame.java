@@ -7,7 +7,6 @@ public class MainGame {
         SwingUtilities.invokeLater(() -> {
             GameFrame gameFrame = new GameFrame("Zombie vs Plant");
             gameFrame.setVisible(true);
-
         });
     }
 }

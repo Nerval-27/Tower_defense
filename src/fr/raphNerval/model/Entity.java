@@ -1,7 +1,6 @@
 package fr.raphNerval.model;
 
 import javax.swing.*;
-import java.awt.*;
 
 public abstract class Entity extends JPanel {
 
@@ -20,8 +19,6 @@ public abstract class Entity extends JPanel {
     //*****METHODES******//
     public abstract void move();
 
-
-    public abstract void draw(Graphics g,int x,int y);
 
 
 }

@@ -1,28 +1,38 @@
 package fr.raphNerval.controller;
 
-import fr.raphNerval.view.GamePanel;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import fr.raphNerval.model.tower.FreezePeashooter;
+import fr.raphNerval.model.tower.Peashooter;
+import fr.raphNerval.model.tower.SunFlower;
+import fr.raphNerval.view.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class GameController implements MouseListener {
+public class GameController implements ActionListener {
 
     //*****ATTRIBUTS*****//
     private GamePanel gamePanel;
+    private int x,y;
 
     //*****CONSTRUCTEUR*****//
-    public GameController(GamePanel gp){
+    public GameController(GamePanel gp,int x,int y){
         this.gamePanel = gp;
+        this.x = x;
+        this.y = y;
     }
 
     //*****METHODES******//
+
+
     @Override
-    public void mouseClicked(MouseEvent e) {}
-    @Override
-    public void mousePressed(MouseEvent e) {}
-    @Override
-    public void mouseReleased(MouseEvent e) {}
-    @Override
-    public void mouseEntered(MouseEvent e) {}
-    @Override
-    public void mouseExited(MouseEvent e) {}
+    public void actionPerformed(ActionEvent e) {
+        if (gamePanel.getPlantType() == GameWindow.PlantType.Sunflower) {
+            gamePanel.getTray()[x + y * 10].addEntity(new SunFlower(gamePanel, x, y));
+        } else if (gamePanel.getPlantType() == GameWindow.PlantType.Peashooter) {
+            gamePanel.getTray()[x + y * 10].addEntity(new Peashooter(gamePanel, x, y));
+        } else if (gamePanel.getPlantType() == GameWindow.PlantType.FreezePeashooter) {
+            gamePanel.getTray()[x + y * 10].addEntity(new FreezePeashooter(gamePanel, x, y));
+        }
+        gamePanel.setPlantType(GameWindow.PlantType.None);
+    }
+
 }

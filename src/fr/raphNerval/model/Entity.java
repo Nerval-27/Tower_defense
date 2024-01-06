@@ -1,11 +1,21 @@
 package fr.raphNerval.model;
 
+import java.awt.Graphics;
+
 import javax.swing.*;
 
 public abstract class Entity extends JPanel {
 
     //*****ATTRIBUTS*****//
     protected int health;
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
     protected int speed;
 
     //*****CONSTRUCTEUR*****//
@@ -17,8 +27,11 @@ public abstract class Entity extends JPanel {
     //*****ACCESSEURS*****//
 
     //*****METHODES******//
-    public abstract void move();
+    public int getHealth() {
+        return health;
+    }
 
-
+    public void draw(Graphics g, int entityX, int entityY) {
+    }
 
 }

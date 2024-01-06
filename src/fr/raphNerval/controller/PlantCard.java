@@ -1,6 +1,9 @@
 package fr.raphNerval.controller;
 
 import javax.swing.*;
+
+
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,6 +19,7 @@ public class PlantCard extends JPanel implements MouseListener {
     public PlantCard(String str){
         this.setSize(64,90);
         this.cardImg = new ImageIcon(getClass().getResource(str)).getImage();
+       
         this.addMouseListener(this);
     }
 

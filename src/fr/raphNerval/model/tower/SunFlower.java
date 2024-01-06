@@ -17,7 +17,7 @@ public class SunFlower extends Plant{
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("SunFlower crée(" + this.x + ", " + this.y + ")");
+        //System.out.println("SunFlower crée(" + this.x + ", " + this.y + ")");
     }
     //*****ACCESSEURS*****//
     public Image getImg(){return img;}

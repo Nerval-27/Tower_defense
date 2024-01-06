@@ -11,10 +11,10 @@ public class GameController implements ActionListener {
 
     //*****ATTRIBUTS*****//
     private GamePanel gamePanel;
-    private int x,y;
+    private int x, y;
 
     //*****CONSTRUCTEUR*****//
-    public GameController(GamePanel gp,int x,int y){
+    public GameController(GamePanel gp, int x, int y) {
         this.gamePanel = gp;
         this.x = x;
         this.y = y;
@@ -22,17 +22,25 @@ public class GameController implements ActionListener {
 
     //*****METHODES******//
 
-
     @Override
     public void actionPerformed(ActionEvent e) {
         if (gamePanel.getPlantType() == GameWindow.PlantType.Sunflower) {
-            gamePanel.getTray()[x + y * 10].addEntity(new SunFlower(gamePanel, x, y));
+            if(gamePanel.getPlayer().getMoney()>=50){
+                   gamePanel.getTray()[y][x].addEntity(new SunFlower(gamePanel, x, y));
+                    gamePanel.getPlayer().setMoney(-50);
+            }
         } else if (gamePanel.getPlantType() == GameWindow.PlantType.Peashooter) {
-            gamePanel.getTray()[x + y * 10].addEntity(new Peashooter(gamePanel, x, y));
+              if(gamePanel.getPlayer().getMoney()>=100){
+            gamePanel.getTray()[y][x].addEntity(new Peashooter(gamePanel, x, y));
+             gamePanel.getPlayer().setMoney(-100);
+              }
         } else if (gamePanel.getPlantType() == GameWindow.PlantType.FreezePeashooter) {
-            gamePanel.getTray()[x + y * 10].addEntity(new FreezePeashooter(gamePanel, x, y));
+              if(gamePanel.getPlayer().getMoney()>=175){
+            gamePanel.getTray()[y][x].addEntity(new FreezePeashooter(gamePanel, x, y));
+            gamePanel.getPlayer().setMoney(-175);
+
         }
         gamePanel.setPlantType(GameWindow.PlantType.None);
     }
-
+}
 }

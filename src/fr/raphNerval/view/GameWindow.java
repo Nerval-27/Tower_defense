@@ -24,7 +24,6 @@ public class GameWindow extends JFrame {
         gamePanel = new GamePanel();
         gamePanel.setLocation(0,0);
         getLayeredPane().add(gamePanel);
-
         setResizable(false);
         setLocationRelativeTo(null);
         setVisible(true);

@@ -1,22 +1,17 @@
 package fr.raphNerval.view;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Game_over extends JPanel {
+public class EndGame extends JPanel {
 
     //*****CONSTRUCTEUR*****//
-    public Game_over() {
+    public EndGame(String path) {
         super();
         setSize(1000, 752);
         setLayout(null);
-        ImageIcon backgroundImageIcon = new ImageIcon(getClass().getResource("/images/gameover.jpg"));
+        ImageIcon backgroundImageIcon = new ImageIcon(getClass().getResource(path));
         JLabel backgroundLabel = new JLabel(backgroundImageIcon);
         backgroundLabel.setBounds(0, 0, 1000, 752);
         add(backgroundLabel);

@@ -181,6 +181,16 @@ public class Box extends JPanel implements MouseListener {
         }
     }
 
+    public static boolean leftZombie(Box[][] boxs){
+        for (Box[] row : boxs) {
+            for (Box box : row) {
+                for(Entity e:box.entities){
+                    if(e instanceof Zombie){
+                        return true;
+                    }
+                }
+            }}return false;}
+
     public static void movedZombie_All(Box [][]boxs,Wave wave){
         // Dessine chaque case
         for (Box[] row : boxs) {

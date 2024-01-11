@@ -41,7 +41,7 @@ public class LevelPanel extends JPanel {
                 EnemiesCount enemiesCount = new EnemiesCount(true,false,false);
                 TowersCount towersCount = new TowersCount(true,true,false,false);
 
-                Wave.nbEnemies = 20;
+                Wave.nbEnemies = 3;
                 GamePanel gamePanel = new GamePanel(towersCount,enemiesCount);
                 if (GameWindow.gameWindow != null) {
                     GameWindow.gameWindow.switchPanel(gamePanel);

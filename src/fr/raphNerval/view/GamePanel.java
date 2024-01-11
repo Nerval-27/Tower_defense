@@ -149,7 +149,11 @@ public class GamePanel extends JPanel implements Serializable {
             if(Box.getNb_InZone()==3){
                 Box.setNb_InZone(0);
                 gameTimer.stop();
-                GameWindow.gameWindow.switchPanel(new Game_over());
+                GameWindow.gameWindow.switchPanel(new EndGame("/images/gameover.jpg"));
+            }
+            if(wave.wave.size() == 0 && !Box.leftZombie(tray)){
+                gameTimer.start();
+                GameWindow.gameWindow.switchPanel(new EndGame("/images/victory.jpg"));
             }
             update(delta);
             revalidate();

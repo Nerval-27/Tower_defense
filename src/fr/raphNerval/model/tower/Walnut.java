@@ -14,13 +14,13 @@ public class Walnut extends Plant {
     //*****CONSTRUCTEUR*****//
     public Walnut(GamePanel gamePanel, int x, int y) {
         super(gamePanel,x,y);
-        this.setHealth(200000);
+        this.setHealth(2000);
         try {
             this.img = ImageIO.read(getClass().getResource("/images/plants/walnut.gif"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("Walnut crée(" + this.x + ", " + this.y + ")");
+        //System.out.println("Walnut crée(" + this.x + ", " + this.y + ")");
     }
 
     //*****ACCESSEURS*****//

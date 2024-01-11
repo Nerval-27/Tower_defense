@@ -7,14 +7,16 @@ import java.io.IOException;
 
 public class ConeZombie extends Zombie{
 
+    //*****ATTRIBUTS*****//
     public Image getModel() {
         return model;
     }
-
     private Image model;
+
+    //*****CONSTRUCTEUR*****//
     public ConeZombie(int reward, int strength) {
 
-        super(2000, 2, reward, strength);
+        super(3000, 2, reward, strength);
         try {
             this.model = ImageIO.read(getClass().getResource("/images/zombies/zombie2.png"));
         } catch (IOException e) {

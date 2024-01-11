@@ -7,18 +7,12 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 public class FreezePea extends Bullet {
-    private Timer timer; // Déplacer la déclaration ici
 
-    public Image getImage() {
-        return image;
-    }
-
-    public void setImage(Image image) {
-        this.image = image;
-    }
-
+    //*****ATTRIBUTS*****//
+    private Timer timer;
     private Image image;
 
+    //*****CONSTRUCTEUR*****//
     public FreezePea() {
         super();
         try {
@@ -28,11 +22,19 @@ public class FreezePea extends Bullet {
         }
     }
 
+    //*****ACCESSEURS*****//
+    public Image getImage() {
+        return image;
+    }
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
+    //*****METHODES*****//
     public void stop_mouvement(int delay) {
         ActionListener stop = event -> {
             this.getTarget().setFreeze(false);
             System.out.println(this.getTarget().isFreeze());
-
             // Ajoutez une pause pour permettre la propagation du changement
 
             timer.stop(); // Maintenant, timer est accessible dans cette méthode

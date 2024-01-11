@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 public class SavedPanel extends JPanel {
 
+    //*****CONSTRUCTEUR*****//
     public SavedPanel(){
         super();
         setSize(1000,752);

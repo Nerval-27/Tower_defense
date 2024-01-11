@@ -4,24 +4,39 @@ import javax.swing.*;
 
 public class Player {
 
+    //*****ATTRIBUTS*****//
+    private int money;
+    private JLabel moneyLabel;
+
+    //*****CONSTRUCTEUR*****//
+    public Player(JLabel moneyLabel, int initialMoney) {
+        this.moneyLabel = moneyLabel;
+        this.money = initialMoney;
+        updateMoneyLabel();
+    }
+
+    //*****ACCESSEURS*****//
     public int getMoney() {
         return money;
     }
 
     public void setMoney(int money) {
-        this.money += money;
+        this.money = money;
         updateMoneyLabel();
     }
 
-    private int money;
-    private JLabel moneyLabel;
-    public Player(JLabel moneyLabel) {
-        this.moneyLabel = moneyLabel;
-        money = 500;
-        updateMoneyLabel();
+    //*****METHODES******//
+    public boolean placePlant(int cost) {
+        if (money >= cost) {
+            money -= cost;
+            updateMoneyLabel();
+            return true;
+        } else {
+            return false;
+        }
     }
+
     private void updateMoneyLabel() {
         moneyLabel.setText("" + money);
     }
-
 }

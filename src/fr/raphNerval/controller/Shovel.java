@@ -33,7 +33,6 @@ public class Shovel extends JPanel implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {}
-
     @Override
     public void mousePressed(MouseEvent e) {}
     @Override

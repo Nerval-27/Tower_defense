@@ -3,9 +3,12 @@ package fr.raphNerval.view;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import fr.raphNerval.model.enemy.EnemiesCount;
+import fr.raphNerval.model.tower.TowersCount;
 
 public class MenuPanel extends JPanel {
 
+    //*****CONSTRUCTEUR*****//
     public MenuPanel() {
         setSize(1000,752);
         setLayout(null);
@@ -52,8 +55,12 @@ public class MenuPanel extends JPanel {
        setVisible(true);
     }
 
+    //*****METHODES******//
     private void startGame() {
-        GamePanel gamePanel = new GamePanel();
+        EnemiesCount enemiesCount = new EnemiesCount(true,true,true);
+        TowersCount towersCount = new TowersCount(true,true,true,true);
+
+        GamePanel gamePanel = new GamePanel(towersCount,enemiesCount);
         if (GameWindow.gameWindow != null) {
             GameWindow.gameWindow.switchPanel(gamePanel);
         }

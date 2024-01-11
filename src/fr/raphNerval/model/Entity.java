@@ -6,7 +6,6 @@ public abstract class Entity extends JPanel {
 
     //*****ATTRIBUTS*****//
     protected int health;
-
     protected int speed;
 
     //*****CONSTRUCTEUR*****//
@@ -27,7 +26,6 @@ public abstract class Entity extends JPanel {
     }
     protected void setHealth(int health){this.health = health;}
 
-    //*****METHODES******//
 
 
 }

@@ -7,6 +7,7 @@ import fr.raphNerval.model.enemy.Zombie;
 import fr.raphNerval.model.tower.FreezePeashooter;
 import fr.raphNerval.model.tower.Peashooter;
 import fr.raphNerval.model.tower.Plant;
+import fr.raphNerval.model.tower.SunFlower;
 import fr.raphNerval.player.Player;
 
 import javax.swing.*;
@@ -22,20 +23,14 @@ import java.util.List;
 public class Box extends JPanel implements MouseListener {
 
     //*****ATTRIBUTS*****//
+    private static int nb_InZone=0;
     private List<Entity> entities;
-    public void setEntities(List<Entity> entities) {
-        this.entities = entities;
-    }
-
-    public List<Entity> getEntities() {
-        return entities;
-    }
     private boolean isEmpty;
     private ActionListener actionListener;
 
     //*****CONSTRUCTEUR*****//
     public Box() {
-        setBorder(new LineBorder(Color.GREEN));
+        //setBorder(new LineBorder(Color.GREEN));
         setOpaque(false);
         addMouseListener(this);
         //setBackground(Color.green);
@@ -43,15 +38,27 @@ public class Box extends JPanel implements MouseListener {
 
         this.entities = new ArrayList<>();
         this.isEmpty = true;
+       
     }
 
     //*****ACCESSEURS*****//
 
     public void setActionListener(ActionListener actionListener){this.actionListener = actionListener;}
-
+    public static int getNb_InZone() {
+        return nb_InZone;
+    }
+    public static void setNb_InZone(int nb_InZone) {
+        Box.nb_InZone = nb_InZone;
+    }
+    public void setEntities(List<Entity> entities) {
+        this.entities = entities;
+    }
+    public List<Entity> getEntities() {
+        return entities;
+    }
+    public boolean isEmpty() {return entities.isEmpty();}
 
     //*****METHODES*****//
-
     public void addEntity(Entity p){
         if((p instanceof Plant && !this.contain_Plant())|| !(p instanceof Plant)){
             if(!entities.contains(p)){
@@ -68,7 +75,6 @@ public class Box extends JPanel implements MouseListener {
             this.repaint();
         }
     }
-
 
     public List<Entity> getZombies(){
         List<Entity> zombies=new ArrayList<>();
@@ -89,6 +95,7 @@ public class Box extends JPanel implements MouseListener {
         }
         return false;
     }
+
     public Plant getPlant(){
         if(this.contain_Plant()){
             for (Entity e : this.entities) {
@@ -99,13 +106,6 @@ public class Box extends JPanel implements MouseListener {
         }
         return null;
     }
-
-    //public Entity getEntity(){return entity;}
-
-    public boolean isEmpty() {
-        return entities.isEmpty();  // Vérifiez si la liste d'entités est vide
-    }
-
 
     public void spawn(Wave wave){
         for (int cle : wave.wave.keySet()) {
@@ -126,35 +126,32 @@ public class Box extends JPanel implements MouseListener {
         for (Box[] row : boxs) {
             for (Box box : row) {
                 if(box.getPlant()!=null){
-                    if(box.getPlant() instanceof Peashooter ||box.getPlant() instanceof FreezePeashooter) {
+                    if(box.getPlant() instanceof Peashooter ||box.getPlant() instanceof FreezePeashooter || box.getPlant() instanceof SunFlower) {
                         box.getPlant().shoot(boxs);
-                    }
                 }
-            }
+            }}
         }
     }
 
-    public static void all_Plant_shoot_move(Box[][] boxs,Player p){
+    public static void all_Plant_shoot_move(Box[][] boxs,Wave wave,Player p){
         // Dessine chaque case
         for (Box[] row : boxs) {
             for (Box box : row) {
                 if(box.getPlant()!=null){
-                    if(box.getPlant() instanceof Peashooter ||box.getPlant() instanceof FreezePeashooter) {
-                        box.getPlant().bullet_move(boxs, p);
-                        System.out.println(p.getMoney());
+                    if(box.getPlant() instanceof Peashooter || box.getPlant() instanceof FreezePeashooter || box.getPlant() instanceof SunFlower) {
+                        box.getPlant().bullet_move(boxs,wave,p);
                     }
                 }
             }
         }
     }
 
-
-    public void movedZombie(Box[][] box){
+    public void movedZombie(Box[][] box,Wave wave){
         for(Entity z:getZombies()){
             Zombie zombie=(Zombie)z;
             int line=(((int)zombie.getPos().y()/100)-1);
             int column=(((int)zombie.getPos().x()/100));
-            System.out.println(zombie.isFreeze());
+            //System.out.println(zombie.isFreeze());
             if(!zombie.isFreeze()){
                 if(zombie.isSpawned() && !this.contain_Plant()){
                     if(zombie.getPos().entity_move(zombie.getSpeed()).x()>=(((int)zombie.getPos().x())/100)*100){
@@ -167,6 +164,9 @@ public class Box extends JPanel implements MouseListener {
                         removeEntity(zombie);
                         if(column-1>=0){
                             box[line][column-1].addEntity(zombie);
+                        }else{
+                             nb_InZone++;
+                              wave.remove_enemy(zombie);
                         }
                     }}
             }
@@ -174,17 +174,18 @@ public class Box extends JPanel implements MouseListener {
                 Plant p=getPlant();
                 p.receivedDamage(zombie.getStrength());
                 if(p.getHealth()<=0){
+                    wave.remove_enemy(zombie);
                     removeEntity(p);
                 }
             }
         }
     }
 
-    public static void movedZombie_All(Box [][]boxs){
+    public static void movedZombie_All(Box [][]boxs,Wave wave){
         // Dessine chaque case
         for (Box[] row : boxs) {
             for (Box box : row) {
-                box.movedZombie(boxs);
+                box.movedZombie(boxs,wave);
             }
         }
     }

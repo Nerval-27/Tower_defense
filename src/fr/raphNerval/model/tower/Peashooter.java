@@ -19,7 +19,7 @@ public class Peashooter extends Plant {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("PeaShooter crée(" + this.x + ", " + this.y + ")");
+       // System.out.println("PeaShooter crée(" + this.x + ", " + this.y + ")");
     }
     //*****ACCESSEURS*****//
     public Image getImg(){return img;}

@@ -15,7 +15,7 @@ public class GameWindow extends JFrame {
     }
 
     //*****ATTRIBUTS*****//
-   private JPanel currentPanel;
+    public static JPanel currentPanel;
     public static GameWindow gameWindow;
 
     //*****CONSTRUCTEUR*****//
@@ -30,6 +30,8 @@ public class GameWindow extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
     }
+
+    //*****METHODES******//
     private void showMenuPanel() {
         MenuPanel menuPanel = new MenuPanel();
         setCurrentPanel(menuPanel);
@@ -53,7 +55,6 @@ public class GameWindow extends JFrame {
     }
     public static void main(String[] args) {
         gameWindow = new GameWindow();
-    }
 
-}
+}}
 

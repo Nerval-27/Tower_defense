@@ -7,13 +7,13 @@ import javax.swing.*;
 
 
 public class Bullet extends JPanel{
+
+    //*****ATTRIBUTS*****//
     protected int health;
-    protected int speed;
     private Zombie target;
     private RealCoordinates pos=null;
 
-
-
+    //*****ACCESSEURS*****//
     public RealCoordinates getPos() {
         return pos;
     }
@@ -24,10 +24,7 @@ public class Bullet extends JPanel{
     public void setTarget(Zombie target) {
         this.target = target;
     }
-    public void receivedDamage(int damage){
-        if(this.health-damage>0){
-            this.health-=damage;
-        }
-    }
+
+
 
 }

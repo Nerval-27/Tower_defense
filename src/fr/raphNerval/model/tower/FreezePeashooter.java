@@ -19,7 +19,7 @@ public class FreezePeashooter extends Plant {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("FreezePeaShooter crée(" + this.x + ", " + this.y + ")");
+        //System.out.println("FreezePeaShooter crée(" + this.x + ", " + this.y + ")");
     }
 
     //*****ACCESSEURS*****//

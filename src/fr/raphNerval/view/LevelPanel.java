@@ -1,11 +1,16 @@
 package fr.raphNerval.view;
 
+import fr.raphNerval.model.enemy.EnemiesCount;
+import fr.raphNerval.model.enemy.Wave;
+import fr.raphNerval.model.tower.TowersCount;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class LevelPanel extends JPanel {
 
+    //*****CONSTRUCTEUR*****//
     public LevelPanel(){
         super();
         setSize(1000,752);
@@ -33,21 +38,40 @@ public class LevelPanel extends JPanel {
         level1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                EnemiesCount enemiesCount = new EnemiesCount(true,false,false);
+                TowersCount towersCount = new TowersCount(true,true,false,false);
 
+                Wave.nbEnemies = 20;
+                GamePanel gamePanel = new GamePanel(towersCount,enemiesCount);
+                if (GameWindow.gameWindow != null) {
+                    GameWindow.gameWindow.switchPanel(gamePanel);
+                }
             }
         });
 
         level2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                EnemiesCount enemiesCount = new EnemiesCount(true,true,false);
+                TowersCount towersCount = new TowersCount(true,true,true,false);
+                Wave.nbEnemies = 30;
+                GamePanel gamePanel = new GamePanel(towersCount,enemiesCount);
+                if (GameWindow.gameWindow != null) {
+                    GameWindow.gameWindow.switchPanel(gamePanel);
+                }
             }
         });
 
         level3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                EnemiesCount enemiesCount = new EnemiesCount(true,true,true);
+                TowersCount towersCount = new TowersCount(true,true,true,true);
+                Wave.nbEnemies = 40;
+                GamePanel gamePanel = new GamePanel(towersCount,enemiesCount);
+                if (GameWindow.gameWindow != null) {
+                    GameWindow.gameWindow.switchPanel(gamePanel);
+                }
             }
         });
 

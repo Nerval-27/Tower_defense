@@ -1,19 +1,20 @@
 package fr.raphNerval.model.projectile;
-
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.IOException;
 
-public class Pea extends Bullet {
+
+public class Sun extends Bullet{
 
     //*****ATTRIBUTS*****//
     private Image image;
+    private boolean show=true;
 
     //*****CONSTRUCTEUR*****//
-    public Pea() {
+    public Sun() {
         super();
         try {
-            this.image= ImageIO.read(getClass().getResource("/images/bullet/pea.png"));
+            this.image= ImageIO.read(getClass().getResource("/images/bullet/sun.png"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -21,6 +22,12 @@ public class Pea extends Bullet {
     }
 
     //*****ACCESSEURS*****//
+    public boolean isShow() {
+        return show;
+    }
+    public void setShow(boolean show) {
+        this.show = show;
+    }
     public Image getImage() {
         return image;
     }
@@ -28,4 +35,3 @@ public class Pea extends Bullet {
         this.image = image;
     }
 }
-

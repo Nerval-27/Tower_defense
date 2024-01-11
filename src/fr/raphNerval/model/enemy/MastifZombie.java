@@ -5,11 +5,14 @@ import java.awt.*;
 import java.io.IOException;
 
 public class MastifZombie extends Zombie {
+
+    //*****ATTRIBUTS*****//
     public Image getModel() {
         return model;
     }
-
     private Image model;
+
+    //*****CONSTRUCTEUR*****//
     public MastifZombie(int reward, int strength) {
 
         super(5000, 1, reward, strength);

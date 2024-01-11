@@ -16,7 +16,7 @@ public class NormalZombie extends Zombie{
     //*****CONSTRUCTEUR*****//
     public NormalZombie(int reward, int strength) {
 
-        super(2000, 2, reward, strength);
+        super(1000, 3, reward, strength);
         try {
             this.model = ImageIO.read(getClass().getResource("/images/zombies/zombie1.png"));
         } catch (IOException e) {

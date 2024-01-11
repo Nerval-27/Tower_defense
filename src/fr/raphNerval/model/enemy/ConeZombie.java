@@ -16,7 +16,7 @@ public class ConeZombie extends Zombie{
     //*****CONSTRUCTEUR*****//
     public ConeZombie(int reward, int strength) {
 
-        super(3000, 2, reward, strength);
+        super(3000, 5, reward, strength);
         try {
             this.model = ImageIO.read(getClass().getResource("/images/zombies/zombie2.png"));
         } catch (IOException e) {

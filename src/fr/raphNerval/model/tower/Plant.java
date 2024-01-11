@@ -111,14 +111,14 @@ public class Plant extends  Entity {
                     bullet.setPos(bullet.getPos().plus(new RealCoordinates(50, 0)));
                 }else{
                     if(bullet instanceof FreezePea){
-                        bullet.getTarget().receivedDamage(500);
+                        bullet.getTarget().receivedDamage(300);
                         ((FreezePea)bullet).stop_mouvement(2000);
                     }else{
-                        bullet.getTarget().receivedDamage(300);
+                        bullet.getTarget().receivedDamage(200);
                     }
                     if( bullet.getTarget().getHealth()<=0){
                         wave.remove_enemy(bullet.getTarget());
-                        p.setMoney(bullet.getTarget().getReward());
+                        p.setMoney(p.getMoney()+bullet.getTarget().getReward());
                         boxs[((int)bullet.getTarget().getPos().y()/100)-1][(((int)bullet.getTarget().getPos().x()/100))].removeEntity(bullet.getTarget());
                     }
                     bullet=null;

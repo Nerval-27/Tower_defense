@@ -56,9 +56,7 @@ public class Zombie extends Entity{
 
     //*****METHODES******//
     public void receivedDamage(int damage){
-        if(this.health-damage>=0){
             this.health-=damage;
-        }
     }
 
     public boolean is_death() {
